@@ -1,7 +1,0 @@
-sbatch run_evaluation_distil.sh
-sbatch run_evaluation_prune.sh
-sbatch run_evaluation_prune4.sh
-sbatch run_evaluation_prune6.sh
-sbatch run_evaluation_quant.sh
-sbatch run_evaluation_quant4.sh
-sbatch run_evaluation_quantf8.sh
