@@ -1,14 +1,14 @@
 \begin{tabular}{llll}
 \toprule
-\textbf{Compression Method} & \textbf{Avg Inference Time CPU} & \textbf{Avg Inference Time CUDA} & \textbf{Model Size} \\
+\textbf{Compression Method} & \textbf{Inference Time CPU} & \textbf{Inference Time GPU} & \textbf{Model Size} \\
 \midrule
-None & 15.44 & 0.010 & \underline{499} \\
-Know. Distil. & 9.07 (-41.3\%) & \textbf{0.005} (-50.0\%) & 255 (-48.8\%) \\
-Pruning (0.2) & 18.45 (+19.5\%) & 0.014 (+40.0\%) & 499 (-0.0\%) \\
-Pruning (0.4) & 18.82 (+21.9\%) & 0.011 (+10.0\%) & 499 (-0.0\%) \\
-Pruning (0.6) & \textbf{5.82} (-62.3\%) & 0.011 (+10.0\%) & 499 (-0.0\%) \\
-Quantization (float8) & 25.32 (+64.0\%) & 0.021 (+110.0\%) & 243 (-51.4\%) \\
-Quantization (int4) & \underline{35.98} (+133.0\%) & \underline{0.030} (+200.0\%) & \textbf{203} (-59.3\%) \\
-Quantization (int8) & 31.46 (+103.8\%) & 0.019 (+90.0\%) & 243 (-51.4\%) \\
+None & 15.439 (sec) & 0.010 (sec) & 499 (MB) \\
+Know. Distil. & -34.3\% $\pm$ 4.6\% & -48.0\% $\pm$ 1.4\% & -48.8\% \\
+Pruning (0.2) & 15.3\% $\pm$ 3.6\% & 10.0\% $\pm$ 2.4\% & -0.0\% \\
+Pruning (0.4) & 18.5\% $\pm$ 3.8\% & 6.4\% $\pm$ 2.7\% & -0.0\% \\
+Pruning (0.6) & -66.4\% $\pm$ 1.2\% & 7.8\% $\pm$ 2.4\% & -0.0\% \\
+Quantization (float8) & 42.1\% $\pm$ 11.0\% & 97.9\% $\pm$ 5.1\% & -51.4\% \\
+Quantization (int4) & 137.7\% $\pm$ 20.8\% & 197.9\% $\pm$ 5.8\% & -59.3\% \\
+Quantization (int8) & 102.4\% $\pm$ 8.6\% & 109.8\% $\pm$ 6.1\% & -51.4\% \\
 \bottomrule
 \end{tabular}
