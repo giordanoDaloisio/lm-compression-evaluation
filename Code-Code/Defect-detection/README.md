@@ -1,12 +1,12 @@
-# CodeXGLUE -- Defect Detection
+# Vulnerability Detection
 
 ## Task Definition
 
-Given a source code, the task is to identify whether it is an insecure code that may attack software systems, such as resource leaks, use-after-free vulnerabilities and DoS attack.  We treat the task as binary classification (0/1), where 1 stands for insecure code and 0 for secure code.
+Given a source code, the task is to identify whether it is an insecure code that may attack software systems, such as resource leaks, use-after-free vulnerabilities and DoS attack. We treat the task as binary classification (0/1), where 1 stands for insecure code and 0 for secure code.
 
 ### Dataset
 
-The dataset we use comes from the paper [*Devign*: Effective Vulnerability Identification by Learning Comprehensive Program Semantics via Graph Neural Networks](http://papers.nips.cc/paper/9209-devign-effective-vulnerability-identification-by-learning-comprehensive-program-semantics-via-graph-neural-networks.pdf). We combine all projects and split 80%/10%/10% for training/dev/test.
+The dataset we use comes from the paper [_Devign_: Effective Vulnerability Identification by Learning Comprehensive Program Semantics via Graph Neural Networks](http://papers.nips.cc/paper/9209-devign-effective-vulnerability-identification-by-learning-comprehensive-program-semantics-via-graph-neural-networks.pdf). We combine all projects and split 80%/10%/10% for training/dev/test.
 
 ### Download and Preprocess
 
@@ -31,11 +31,11 @@ cd ..
 
 After preprocessing dataset, you can obtain three .jsonl files, i.e. train.jsonl, valid.jsonl, test.jsonl
 
-For each file, each line in the uncompressed file represents one function.  One row is illustrated below.
+For each file, each line in the uncompressed file represents one function. One row is illustrated below.
 
-   - **func:** the source code
-   - **target:** 0 or 1 (vulnerability or not)
-   - **idx:** the index of example
+- **func:** the source code
+- **target:** 0 or 1 (vulnerability or not)
+- **idx:** the index of example
 
 ### Data Statistics
 
@@ -98,7 +98,6 @@ python run.py \
     --seed 123456  2>&1 | tee train.log
 ```
 
-
 ### Inference
 
 ```shell
@@ -135,14 +134,15 @@ python ../evaluator/evaluator.py -a ../dataset/test.jsonl -p saved_models/predic
 
 The results on the test set are shown as below:
 
-| Methods  |    ACC    |
-| -------- | :-------: |
-| BiLSTM   |   59.37   |
-| TextCNN  |   60.69   |
+| Methods                                          |    ACC    |
+| ------------------------------------------------ | :-------: |
+| BiLSTM                                           |   59.37   |
+| TextCNN                                          |   60.69   |
 | [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf)  |   61.05   |
 | [CodeBERT](https://arxiv.org/pdf/2002.08155.pdf) | **62.08** |
 
 ## Reference
+
 <pre><code>@inproceedings{zhou2019devign,
   title={Devign: Effective vulnerability identification by learning comprehensive program semantics via graph neural networks},
   author={Zhou, Yaqin and Liu, Shangqing and Siow, Jingkai and Du, Xiaoning and Liu, Yang},

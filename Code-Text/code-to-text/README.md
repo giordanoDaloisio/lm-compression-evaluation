@@ -1,4 +1,4 @@
-# CodeXGLUE -- Code-To-Text
+# Code Summarization
 
 ## Task Definition
 
@@ -66,30 +66,29 @@ os.chdir("/content/dataset")
 os.chdir("../")
 ```
 
-
 ### Data Format
 
 After preprocessing dataset, you can obtain three .jsonl files, i.e. train.jsonl, valid.jsonl, test.jsonl
 
-For each file, each line in the uncompressed file represents one function.  One row is illustrated below.
+For each file, each line in the uncompressed file represents one function. One row is illustrated below.
 
-  - **repo:** the owner/repo
+- **repo:** the owner/repo
 
-  - **path:** the full path to the original file
+- **path:** the full path to the original file
 
-  - **func_name:** the function or method name
+- **func_name:** the function or method name
 
-  - **original_string:** the raw string before tokenization or parsing
+- **original_string:** the raw string before tokenization or parsing
 
-  - **language:** the programming language
+- **language:** the programming language
 
-  - **code/function:** the part of the `original_string` that is code
+- **code/function:** the part of the `original_string` that is code
 
-  - **code_tokens/function_tokens:** tokenized version of `code`
+- **code_tokens/function_tokens:** tokenized version of `code`
 
-  - **docstring:** the top-level comment or docstring, if it exists in the original string
+- **docstring:** the top-level comment or docstring, if it exists in the original string
 
-  - **docstring_tokens:** tokenized version of `docstring`
+- **docstring_tokens:** tokenized version of `docstring`
 
 ### Data Statistic
 
@@ -141,12 +140,11 @@ data_dir=../dataset
 output_dir=model/$lang
 train_file=$data_dir/$lang/train.jsonl
 dev_file=$data_dir/$lang/valid.jsonl
-epochs=10 
+epochs=10
 pretrained_model=microsoft/codebert-base #Roberta: roberta-base
 
 python run.py --do_train --do_eval --model_type roberta --model_name_or_path $pretrained_model --train_filename $train_file --dev_filename $dev_file --output_dir $output_dir --max_source_length $source_length --max_target_length $target_length --beam_size $beam_size --train_batch_size $batch_size --eval_batch_size $batch_size --learning_rate $lr --num_train_epochs $epochs
 ```
-
 
 ### Inference
 
@@ -169,15 +167,15 @@ python ../evaluator/evaluator.py model/$lang/test_1.gold < model/$lang/test_1.ou
 
 The results on the test set are shown as below:
 
-| Model       |   Ruby    | Javascript |    Go     |  Python   |   Java    |    PHP    |  Overall  |
-| ----------- | :-------: | :--------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| Seq2Seq     |   9.64    |   10.21    |   13.98   |   15.93   |   15.09   |   21.08   |   14.32   |
-| Transformer |   11.18   |   11.59    |   16.38   |   15.81   |   16.26   |   22.12   |   15.56   |
-| [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf)     |   11.17   |   11.90    |   17.72   |   18.14   |   16.47   |   24.02   |   16.57   |
-| [CodeBERT](https://arxiv.org/pdf/2002.08155.pdf)    | **12.16** | **14.90**  | **18.07** | **19.06** | **17.65** | **25.16** | **17.83** |
-
+| Model                                            |   Ruby    | Javascript |    Go     |  Python   |   Java    |    PHP    |  Overall  |
+| ------------------------------------------------ | :-------: | :--------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| Seq2Seq                                          |   9.64    |   10.21    |   13.98   |   15.93   |   15.09   |   21.08   |   14.32   |
+| Transformer                                      |   11.18   |   11.59    |   16.38   |   15.81   |   16.26   |   22.12   |   15.56   |
+| [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf)  |   11.17   |   11.90    |   17.72   |   18.14   |   16.47   |   24.02   |   16.57   |
+| [CodeBERT](https://arxiv.org/pdf/2002.08155.pdf) | **12.16** | **14.90**  | **18.07** | **19.06** | **17.65** | **25.16** | **17.83** |
 
 ## Reference
+
 <pre><code>@article{husain2019codesearchnet,
   title={Codesearchnet challenge: Evaluating the state of semantic code search},
   author={Husain, Hamel and Wu, Ho-Hsiang and Gazit, Tiferet and Allamanis, Miltiadis and Brockschmidt, Marc},

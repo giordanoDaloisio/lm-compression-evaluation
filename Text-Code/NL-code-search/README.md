@@ -1,8 +1,8 @@
-M# CodeXGLUE -- Code Search (AdvTest)
+# Code Search
 
 ## Task Definition
 
-Given a natural language, the task is to search source code that matches the natural language. To test the generalization ability of a model,  function names and variables in test sets are replaced by special tokens.
+Given a natural language, the task is to search source code that matches the natural language. To test the generalization ability of a model, function names and variables in test sets are replaced by special tokens.
 
 ## Dataset
 
@@ -13,7 +13,7 @@ The dataset we use comes from [CodeSearchNet](https://arxiv.org/pdf/1909.09436.p
 - Remove examples that documents contain special tokens (e.g. <img ...> or https:...)
 - Remove examples that documents are not English.
 
-Besides, to test the generalization ability of a model,  function names and variables in test sets are replaced by special tokens.
+Besides, to test the generalization ability of a model, function names and variables in test sets are replaced by special tokens.
 
 ### Data Download ans Preprocess
 
@@ -33,19 +33,19 @@ cd ..
 
 After preprocessing dataset, you can obtain three .jsonl files, i.e. train.jsonl, valid.jsonl, test.jsonl
 
-For each file, each line in the uncompressed file represents one function.  One row is illustrated below.
+For each file, each line in the uncompressed file represents one function. One row is illustrated below.
 
-  - **repo:** the owner/repo
-  - **path:** the full path to the original file
-  - **func_name:** the function or method name
-  - **original_string:** the raw string before tokenization or parsing
-  - **language:** the programming language
-  - **code/function:** the part of the `original_string` that is code
-  - **code_tokens/function_tokens:** tokenized version of `code`
-  - **docstring:** the top-level comment or docstring, if it exists in the original string
-  - **docstring_tokens:** tokenized version of `docstring`
-  - **url:** the url for the example (identify natural language)
-  - **idx**: the index of code (identify code)
+- **repo:** the owner/repo
+- **path:** the full path to the original file
+- **func_name:** the function or method name
+- **original_string:** the raw string before tokenization or parsing
+- **language:** the programming language
+- **code/function:** the part of the `original_string` that is code
+- **code_tokens/function_tokens:** tokenized version of `code`
+- **docstring:** the top-level comment or docstring, if it exists in the original string
+- **docstring_tokens:** tokenized version of `docstring`
+- **url:** the url for the example (identify natural language)
+- **idx**: the index of code (identify code)
 
 ### Data Statistics
 
@@ -76,7 +76,7 @@ Given a text-code file evaluator/test.jsonl:
 Report MRR score
 
 ```shell
-python evaluator/evaluator.py -a evaluator/test.jsonl  -p evaluator/predictions.jsonl 
+python evaluator/evaluator.py -a evaluator/test.jsonl  -p evaluator/predictions.jsonl
 ```
 
 {'MRR': 0.4233}
@@ -95,14 +95,13 @@ For each url for natural language, descending sort candidate codes and return th
 
 ## Pipeline-CodeBERT
 
-We also provide a pipeline that fine-tunes [CodeBERT](https://arxiv.org/pdf/2002.08155.pdf) on this task. 
+We also provide a pipeline that fine-tunes [CodeBERT](https://arxiv.org/pdf/2002.08155.pdf) on this task.
 
 ### Dependency
 
 - python 3.6 or 3.7
 - torch==1.4.0
 - transformers>=2.5.0
-
 
 ### Fine-tune
 
@@ -129,7 +128,6 @@ python run.py \
     --evaluate_during_training \
     --seed 123456 2>&1| tee train.log
 ```
-
 
 ### Inference
 
@@ -159,7 +157,7 @@ python run.py \
 ### Evaluation
 
 ```shell
-python ../evaluator/evaluator.py -a ../dataset/test.jsonl  -p saved_models/predictions.jsonl 
+python ../evaluator/evaluator.py -a ../dataset/test.jsonl  -p saved_models/predictions.jsonl
 ```
 
 {'MRR': 0.2719}
@@ -168,15 +166,17 @@ python ../evaluator/evaluator.py -a ../dataset/test.jsonl  -p saved_models/predi
 
 The results on the test set are shown as below:
 
-| Method   |     MRR    |
-| -------- | :--------: |
+| Method                                           |    MRR     |
+| ------------------------------------------------ | :--------: |
 | [Roberta](https://arxiv.org/pdf/1907.11692.pdf)  |   0.1833   |
 | [CodeBERT](https://arxiv.org/pdf/2002.08155.pdf) | **0.2719** |
 
 ## Model and Demo
+
 A pretrained model, additional training script with dataset, and demo of a finetuned CodeBERT model for the task of Code Search can be found here: https://drive.google.com/file/d/1ZO-xVIzGcNE6Gz9DEg2z5mIbBv4Ft1cK/view.
 
 ## Reference
+
 <pre><code>@article{husain2019codesearchnet,
   title={Codesearchnet challenge: Evaluating the state of semantic code search},
   author={Husain, Hamel and Wu, Ho-Hsiang and Gazit, Tiferet and Allamanis, Miltiadis and Brockschmidt, Marc},
