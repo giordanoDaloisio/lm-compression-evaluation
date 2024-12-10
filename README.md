@@ -1,6 +1,6 @@
 # On the Compression of Language Models for Code: An Empirical Study on CodeBERT
 
-This repository contains the data and scripts used in the paper _On the Compression of Language Models for Code: An Empirical Study on CodeBERT_ submitted to the IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER 2025) conference.
+This repository contains the data and scripts used in the paper _On the Compression of Language Models for Code: An Empirical Study on CodeBERT_ accepted at IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER 2025) conference.
 
 ## Repository Structure
 
