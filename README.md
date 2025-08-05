@@ -29,3 +29,18 @@ conda activate lm_compress
 ```
 
 Next, refer to the `README.md` file in each of the `Code-Code`, `Code-Text` and `Text-Code` subfolders to download the datasets for each task.
+
+## Citation
+
+Please cite our work if you use this code in your project
+
+```bibtex
+@inproceedings{d2025compression,
+  title={On the compression of language models for code: An empirical study on codebert},
+  author={d'Aloisio, Giordano and Traini, Luca and Sarro, Federica and Di Marco, Antinisca},
+  booktitle={2025 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)},
+  pages={12--23},
+  year={2025},
+  organization={IEEE}
+}
+```
